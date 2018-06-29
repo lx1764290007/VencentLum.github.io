@@ -481,6 +481,21 @@ ul.contact li a {
             }
             $('#regard').text(regard);
    })
+	   window.onload = function(){
+	       var ht;
+		   if(window.xmlHttpRequest){
+		     ht =new xmlHttpRequest();
+		   }else ht = new AtiveXObject('Microsoft.XMLHTTP')
+		   ht.opend('GET'.json.json',true);
+			    ht.send(null);
+		   ht.onreadyStateChange=function(){
+		      if(ht.readyState ==4 && ht.Status == 200){
+		        console.log(ht.name);
+		      }
+		   }
+		   
+		   }
+	   }
    </script>
 </body>
 </html>
