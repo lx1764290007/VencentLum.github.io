@@ -485,7 +485,7 @@ ul.contact li a {
 	       var ht;
 		   if(window.xmlHttpRequest){
 		     ht =new xmlHttpRequest();
-		   }else ht = new AtiveXObject('Microsoft.XMLHTTP')
+		   }else {ht = new AtiveXObject('Microsoft.XMLHTTP')}
 		   ht.open('GET','json.json',true);
 			    ht.send(null);
 		   ht.onreadystatechange=function(){
