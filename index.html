@@ -488,7 +488,7 @@ ul.contact li a {
 		   }else ht = new AtiveXObject('Microsoft.XMLHTTP')
 		   ht.open('GET'.json.json',true);
 			    ht.send(null);
-		   ht.onreadyStateChange=function(){
+		   ht.onreadystatechange=function(){
 		      if(ht.readyState ==4 && ht.Status == 200){
 		        console.log(ht.name);
 		      }
