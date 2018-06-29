@@ -1,5 +1,5 @@
 	$(function(){
-  	$.get('json.json',async:true,success:function(date){
+  	$.get(url:'json.json',async:true,success:function(date){
 	       console.log(date.name)
 	})
   })
