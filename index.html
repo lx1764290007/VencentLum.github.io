@@ -2,11 +2,11 @@
 <html class="no-js">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="VencentLum的个人主页">
+  <meta name="keywords" content="VencentLum,个人主页,index">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>我的主页</title>
-  <meta name="description" content="个人主页">
+  <title>VencentLum</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no">
   <link rel="stylesheet" href="css/normalize.css">
   <meta name="renderer" content="webkit">
@@ -39,7 +39,7 @@
       overflow: hidden;
     }
    .content .am-slider-desc {
-     margin-bottom: 7%;
+     margin-bottom: 12%;
      text-indent: 2em;
      background: inherit;
    }
@@ -85,8 +85,24 @@ p.height {
  .color {
    color: whitesmoke;
  }
-
-
+    .fixed {
+  top: 0;
+  z-index: 100;
+  position: fixed;
+  background: #9c9bf6;
+}
+    @media only screen and (max-width: 480px) {
+      #about {
+        background: url('img/meh.png') no-repeat;
+        background-size: cover;
+      }
+    }
+    @media only screen and (min-width: 480px) {
+      #about {
+        background: url('img/me.png') no-repeat;
+        background-size: cover;
+      }
+    }
   </style>
 </head>
 
@@ -97,8 +113,8 @@ p.height {
    </script>
   <![endif]-->
 
-  <div class="am-g">
-   <nav class="scrollspy-nav am-u-sm-12" data-am-scrollspynav="{offsetTop: 0}">
+  <div class="am-hide-md-down">
+   <nav class="scrollspy-nav am-u-md-12" data-am-scrollspynav="{offsetTop: 0}">
      <ul>
        <li><a href="#about">VencentLum</a></li>
        <li><a href="#team">杂项</a></li>
@@ -108,13 +124,33 @@ p.height {
    </nav>
 </div>
 
-  <div id="about" class="content am-vertical-align" style="background: url('img/me.png') no-repeat;background-size: cover" data-am-scrollspy="{animation:'slide-left'}">
+
+    <header data-am-widget="header" class="am-header am-header-default am-show-md-down fixed">
+      <div class="am-header-left am-header-nav">
+        <a href="#" >
+
+          <i class="am-header-icon am-icon-home"></i>
+        </a>
+      </div>
+
+      <h1 class="am-header-title">
+        <a href="#">
+         Hallo!
+        </a>
+      </h1>
+
+      <div class="am-header-right am-header-nav">
+          <i class="am-header-icon am-icon-bars" data-am-offcanvas="{target: '#sidebar', effect: 'push'}" style="cursor: pointer"></i>
+      </div>
+    </header>
+
+  <div id="about" class="content am-vertical-align" data-am-scrollspy="{animation:'slide-left'}">
 
     <div class="am-g am-g-fixed am-vertical-align-middle" data-am-scrollspy="{animation: 'scale-up'}">
-      <div class="am-u-sm-4">
+      <div class="am-u-md-4">
         <dl class="color am-kai">
-          <dt>人物背景</dt>
-          <dd>Made in China,1997.搭载多核运算处理芯片，整合了人工智能技术，能源技术等。目前运转稳定，连续运行21年无异常，出厂手续齐全！</dd>
+          <dt class="am-hide-md-down">人物背景</dt>
+          <dd class="am-hide-md-down">Made in China,1997.搭载多核运算处理芯片，整合了人工智能技术，能源技术等。目前运转稳定，连续运行21年无异常，出厂手续齐全！</dd>
           <dt>标签</dt>
           <dd>
             <span class="am-badge am-badge-success am-round">周星驰</span>
@@ -128,23 +164,23 @@ p.height {
           <dt></dt>
           <dd>
             <blockquote>
-              <p>无论走到哪里，都应该记住，过去都是假的，回忆是一条没有尽头的路，一切以往的春天都不复存在，就连那最坚韧而又狂乱的爱情归根结底也不过是一种转瞬即逝的现实。</p>
-              <small>马尔克斯 ——《百年孤独》</small>
+              <p>世界上一成不变的东西，只有“任何事物都是在不断变化的”这条真理。</p>
+              <small> 斯里兰卡</small>
             </blockquote>
           </dd>
         </dl>
       </div>
-      <div class="am-u-sm-4 ">
+      <div class="am-u-md-4 ">
 
       </div>
-      <div class="am-u-sm-4" id="contact">
+      <div class="am-u-md-4" id="contact">
         <h3>联系我</h3>
-        <a href="##" class="am-icon-btn am-primary am-icon-qq animated"></a>
-        <a href="##" class="am-icon-btn am-success am-icon-wechat animated"></a>
-        <a href="##" class="am-icon-btn am-danger am-icon-weibo animated"></a>
-        <a href="##" class="am-icon-btn am-icon-envelope animated"></a>
-        <a href="##" class="am-icon-btn am-icon-twitter animated rubberBand infinite"></a>
-        <a href="##" class="am-icon-btn am-icon-facebook animated swing infinite"></a>
+        <a href="javascript: void(0)" class="am-icon-btn am-primary am-icon-qq animated" data-am-modal="{target: '#modal-qq', closeViaDimmer: 0}"></a>
+        <a href="javascript: void(0)" class="am-icon-btn am-success am-icon-wechat animated" data-am-modal="{target: '#modal-wechat', closeViaDimmer: 0}"></a>
+        <a href="http://weibo.com/vencentlum0424" target="_blank" class="am-icon-btn am-danger am-icon-weibo animated"></a>
+        <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=7dza29nf1N3d3dqtnJzDjoKA" class="am-icon-btn am-icon-envelope animated"></a>
+        <a href="https://twitter.com/null_1764290007" target="_blank" class="am-icon-btn am-icon-twitter animated rubberBand infinite"></a>
+        <a href="https://www.facebook.com/profile.php?id=100018472446679" target="_blank" class="am-icon-btn am-icon-facebook animated swing infinite"></a>
 
       </div>
     </div>
@@ -155,23 +191,21 @@ p.height {
      <div class="am-slider am-slider-default" data-am-flexslide id="slider" data-am-scrollspy="{animation:'fade'}">
        <ul class="am-slides">
          <li>
-           <img class="am-img-responsive" src="img/蜡笔小新.png" />
+           <img class="am-img-responsive" src="" id="lbxx"/>
            <div class="am-slider-desc">
-             <blockquote class="am-text-warning">
+             <blockquote>
                <h3>"活得像他一样快乐"</h3>
                <p>"只有快乐的人，才能传递快乐。"</p>
              </blockquote>
              <dl>
                <dt>喜欢的动漫--《蜡笔小新》</dt>
-               <dd>小的时候对于蜡笔小新的印象只限于有趣，好玩，声音好听。</dd>
-                 <dd>长大后发现蜡笔小新无论是思维方式还是开放程度都是极大的。</dd>
-                <dd>成年以后压力越来越大，不知道为什么蜡笔小新这部动漫让人看得很轻松</dd>
+
              <dd>只要你看着就会发自内心的笑出来，有时候自己可能都不知道笑的是什么.</dd>
                </dl>
            </div>
          </li>
          <li>
-           <img class="am-img-responsive" src="img/使命召唤.png" />
+           <img class="am-img-responsive" src="" id="yndl"/>
            <div class="am-slider-desc am-monospace">
                <h3>想去的地方--云南的大理</h3>
 
@@ -188,7 +222,7 @@ p.height {
    </div>
    <div id="ep" class="content am-vertical-align" data-am-scrollspy="{animation:'fade'}">
      <div class="am-g am-vertical-align-middle">
-       <div class="am-u-sm-4" data-am-scrollspy="{animation:'slide-top'}">
+       <div class="am-u-sm-6" data-am-scrollspy="{animation:'slide-top'}">
          <div class="am-thumbnail">
            <img src="img/demo1.png" class="am-thumbnail" alt=""/>
            <div class="am-thumbnail-caption">
@@ -201,7 +235,7 @@ p.height {
            </div>
        </div>
          </div>
-         <div class="am-u-sm-4" data-am-scrollspy="{animation:'slide-bottom'}">
+         <div class="am-u-sm-6" data-am-scrollspy="{animation:'slide-bottom'}" >
            <div class="am-thumbnail">
              <img src="img/demo2.png" class="am-thumbnail" alt=""/>
              <div class="am-thumbnail-caption">
@@ -214,34 +248,20 @@ p.height {
              </div>
            </div>
          </div>
-       <div class="am-u-sm-4" data-am-scrollspy="{animation:'fade'}">
-         <div class="am-thumbnail">
-           <img src="img/demo3.jpg" alt=""/>
-           <div class="am-thumbnail-caption">
-             <h3>Update soon</h3>
-             <p class="height" style="height: 3.8em">...</p>
-             <p>
-               <button class="am-btn am-btn-primary am-disabled">演示</button>
-               <button class="am-btn am-btn-default am-disabled">github</button>
-             </p>
-           </div>
-         </div>
-       </div>
+
        </div>
 
      </div>
 
-
-
-   <div id="third" class="content am-vertical-align" data-am-scrollspy="{animation:'fade'}">
+  <div id="third" class="content am-vertical-align" data-am-scrollspy="{animation:'fade'}">
      <div class="am-g am-vertical-align-middle">
-       <div class="am-usm-12"  data-am-scrollspy="{animation:'slide-right'}">
+       <div class="am-u-md-12"  data-am-scrollspy="{animation:'slide-right'}">
          <div class="am-form-group">
            <input type="text" class="am-form-field" id="doc-qr-text" placeholder="输入你想转换的文本">
 
-        <button class="am-btn am-btn-secondary am-center" style="margin-top: 35px" id="doc-gen-qr" type="submit">生成</button>
+        <button class="am-btn am-btn-secondary am-center" style="margin-top: 15px" id="doc-gen-qr" type="submit">生成</button>
          </div>
-         <div id="doc-qrcode" class="am-text-center" style="margin-top: 35px"></div>
+         <div id="doc-qrcode" class="am-text-center" style="margin-top: 25px"></div>
          </div>
        </div>
    </div>
@@ -270,6 +290,43 @@ p.height {
       </div>
     </div>
   </div>
+  <!-- 侧边栏内容 -->
+  <div id="sidebar" class="am-offcanvas">
+    <div class="am-offcanvas-bar">
+      <div class="am-offcanvas-content">
+        <ul class="am-nav">
+          <li><a href="#about">VencentLum</a></li>
+          <li><a href="#team">杂项</a></li>
+          <li><a href="#ep">Demo</a></li>
+          <li><a href="#third">二维码工具</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!--modal for qq-->
+  <div class="am-modal am-modal-no-btn" tabindex="-1" id="modal-qq">
+    <div class="am-modal-dialog">
+      <div class="am-modal-hd">QQ
+        <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+      </div>
+      <div class="am-modal-bd">
+        <img src="img/qqID.jpg" class="am-img-responsive am-icon-align-center">
+      </div>
+    </div>
+  </div>
+  <!--modal for wechat-->
+  <div class="am-modal am-modal-no-btn" tabindex="-1" id="modal-wechat">
+    <div class="am-modal-dialog">
+      <div class="am-modal-hd">微信
+        <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+      </div>
+      <div class="am-modal-bd">
+        <img src="img/wechatID.jpg" class="am-img-responsive am-icon-align-center">
+      </div>
+    </div>
+  </div>
+
   <script src="js/jq-3.3.1.js"></script>
   <script src="js/amazeui.min.js"></script>
 
@@ -277,11 +334,26 @@ p.height {
 
        $(document).ready(function() {
          var $st = $(document).scrollTop();
+         var wid = $(window).width();
          var $ch= $('.content').height();
+
+         function imgChange(e){
+           if(e<=$ch){
+             $('#lbxx').attr('src','img/蜡笔小新.jpeg');
+             $('#yndl').attr('src','img/云南大理.jpg')
+           }else{
+             $('#lbxx').attr('src','img/蜡笔小新.png');
+             $('#yndl').attr('src','img/云南大理.png')
+           }
+         }
+         imgChange(wid);
       window.onresize=function(){
         $ch= $('.content').height();
+        var wid = $(window).width();
+         imgChange(wid);
+        console.log(wid)
       };
-         // $('.content').css('height',document.documentElement.clientHeight);//动态设置内容区的高度为客户端屏幕的高度，html,body高度避免设置100%，以保证scroll事件可被冒泡
+         // $('.content').css('height',document.documentElement.clientHeight);动态设置内容区的高度为客户端屏幕的高度，html,body高度避免设置100%，以保证scroll事件可被冒泡
             $(window).scroll(function(e){
               if($st < $(document).scrollTop()){
                 up();
@@ -328,7 +400,7 @@ p.height {
            slideshowSpeed: 3500,
            controlNav: true,
            directionNav: true,
-           prevText: "Previous",           // String: 上一个按钮文字
+           prevText: "Previous",
            nextText: "Next",
            playAfterPaused: 2000,
            animation: "slide"
@@ -340,15 +412,15 @@ p.height {
           $('#draw').on('click',function(){
              $('#draw-confirm').modal({
                onCancel: function(){
-                 $('#text').html('fail to refuse'+'<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>');
-                   $('#drawp-modal').addClass('animated flippers flipInY')
+                 $('#text').html('不给拒绝！'+'<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>');
+                   $('#drawp-modal')
                  .modal({
                    closeViaDimmer: false
                  })
                },
                onConfirm: function(){
-                 $('#text').html('颤抖吧'+'<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>');
-                 $('#drawp-modal').addClass('animated flippers flipInX')
+                 $('#text').html('请看：'+'<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>');
+                 $('#drawp-modal')
                      .modal({
                    closeViaDimmer: false
                  })
