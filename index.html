@@ -134,7 +134,7 @@ p.height {
       </div>
 
       <h1 class="am-header-title">
-        <a href="#">
+        <a href="#" id="title">
          Hallo!
         </a>
       </h1>
@@ -228,10 +228,10 @@ p.height {
            <div class="am-thumbnail-caption">
              <h3>flex音乐播放盒子</h3>
              <p class="height">flex盒模型+媒体查询，基于支持H5<code>audio</code>,JQUERY的网页播放器，兼容市面大部分主流浏览器。</p>
-             <p>
-               <button class="am-btn am-btn-primary">演示</button>
-               <button class="am-btn am-btn-default">github</button>
-             </p>
+                <p>
+               <a href="https://lx1764290007.github.io/music_box/" target="_blank"><button class="am-btn am-btn-primary">演示</button></a>
+               <a href="https://github.com/lx1764290007/music_box" target="_blank"><button class="am-btn am-btn-default">github</button></a>
+                </p>
            </div>
        </div>
          </div>
@@ -242,8 +242,8 @@ p.height {
                <h3>专题购物网站主页</h3>
                <p class="height">标签：简约，时尚，排版简单，主题明确</p>
                <p>
-                 <button class="am-btn am-btn-primary">演示</button>
-                 <button class="am-btn am-btn-default">github</button>
+                 <a href="https://lx1764290007.github.io/shopping/" target="_blank"> <button class="am-btn am-btn-primary">演示</button></a>
+                 <a href="https://github.com/lx1764290007/shopping" target="_blank"> <button class="am-btn am-btn-default">github</button></a>
                </p>
              </div>
            </div>
@@ -370,23 +370,27 @@ p.height {
        }else $('.scrollspy-nav').css('background','hsla(50,30%,20%,0.1)')
             });
            function up(){
-             if($(document).scrollTop() > 0 && $(document).scrollTop() < $ch){
+             if($(document).scrollTop() > 25 && $(document).scrollTop() < $ch){
                 $("[href='#team']").trigger('click');
-
-             }else if($(document).scrollTop() > $ch && $(document).scrollTop() < 2*$ch){
+                   $('#title').text('杂项');
+             }else if($(document).scrollTop() > $ch+25 && $(document).scrollTop() < 2*$ch){
                $("[href='#ep']").trigger('click');
-
-             }else if($(document).scrollTop() > 2*$ch && $(document).scrollTop() < 3*$ch) {
-               $("[href='#third']").trigger('click')
+               $('#title').text('Demo');
+             }else if($(document).scrollTop() > 2*$ch+25 && $(document).scrollTop() < 3*$ch) {
+               $("[href='#third']").trigger('click');
+               $('#title').text('二维码工具');
              }else return false
            }
          function low(){
-           if($(document).scrollTop() < $ch) {
+           if($(document).scrollTop() < $ch-25) {
              $("[href='#about']").trigger('click');
-           }else if($(document).scrollTop() > $ch && $(document).scrollTop() < 2*$ch){
+             $('#title').text('Hallo!');
+           }else if($(document).scrollTop() > $ch && $(document).scrollTop() < 2*$ch-25){
              $("[href='#team']").trigger('click')
-           }else if($(document).scrollTop() > 2*$ch && $(document).scrollTop() < 3*$ch){
+             $('#title').text('杂项');
+           }else if($(document).scrollTop() > 2*$ch && $(document).scrollTop() < 3*$ch-25){
              $("[href='#ep']").trigger('click')
+             $('#title').text('Demo');
            }else return false
          }
            $('.am-icon-qq,.am-icon-wechat,.am-icon-weibo,.am-icon-envelope').on('mouseenter',function(){
