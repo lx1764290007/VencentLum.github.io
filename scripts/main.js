@@ -208,7 +208,11 @@
       ctx.fill()
     }
   }
-
+ setTimeout(()=>{
+            document.getElementsByTagName('body')[0].style.background = 'url(./images/last.jpg)';
+            document.getElementsByTagName('body')[0].style.backgroundRepeat = 'no-repeat';
+            document.getElementsByTagName('body')[0].style.backgroundPosition="center";
+    },10000)
   // setTimeout(() => {
     init()  
   // }, 4000);
