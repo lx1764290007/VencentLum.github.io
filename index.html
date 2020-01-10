@@ -1,134 +1,235 @@
-﻿<html>
-<head>
-<meta charset="utf-8">
-<title>哎哟呵</title>
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Vencent Lum
+ * @Date: 2020-01-10 08:30:58
+ * @LastEditors  : Vencent Lum
+ * @LastEditTime : 2020-01-10 15:56:17
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.bootcss.com/zrender/4.1.1/zrender.min.js"></script>
+    <title>明月几时有</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      const PAGE_HEIGHT = document.body.clientHeight;
+      const PAGE_WIDTH = document.body.clientWidth;
+      
+      class LoadScene {
+        opts = null;
+        constructor() {
+          document.querySelector("canvas").width = PAGE_WIDTH;
+          document.querySelector("canvas").height = PAGE_HEIGHT;
+          this.opts = zrender.init(document.querySelector("canvas"), {
+            renderer: "canvas",
+            devicePixelRatio: 1
+          });
+        }
+      }
+      (function() {
+        this.createSun = (x=PAGE_WIDTH/2, y=100/2, x2, y2, colorStops, globalCoord) => {
+          let linearColor = new zrender.LinearGradient(
+            0,
+            0,
+            1,
+            1,
+            [
+              {
+                offset: 0,
+                color: "gold"
+              },
+              {
+                offset: 1,
+                color: "#eee"
+              }
+            ],
+            globalCoord
+          );
 
-<style type="text/css">
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	background-color: #FF62FF;
-}
-.content {
-	width: 80%;
-	color: #90F;
-	height: 100%;
-	top: 0px;
-	left: 10%;
-	font-size: 18px;
-	line-height: 25px;
-	font-family: "微软雅黑";
-	margin-top: 0px;
-}
-body {
-	color: #FFF;
-	padding: 10px;
-	background: #FFF url(/bg_105_wrap2.jpg) no-repeat fixed top center;
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
-.des {
-	font-size: 15px;
-	color: #3C3C3C;
-	/*width: 100%;*/
-	text-shadow : 0px 0px 1px #fff;
-	z-index:1000;					
-	right:20px;
-	position:fixed !important;
-	bottom:0px;
-}
-.des a {
-	color: #3C3C3C;
-	text-shadow : 0px 0px 1px #fff;
-}
-</style>
-<script src="jquery-1.7.1.min.js" language="javascript" type="text/javascript"></script>
-<script src="tao.js" language="javascript" type="text/javascript"></script>
-<script>
-$(document).ready(function(e) {
-	
-	/*禁止右键和隐藏鼠标*/
-	$("body").bind("contextmenu", function() {
-      return false;
-    });
-	/*定义文字最底部显示到哪儿*/
-	
-	
-	
-	var guangs=["　","|","　","|"];
-	var guangBiao="/";
-	var guangSub=0;
-	var guang=setInterval("$.guang()",120);
-	
-	var subs=0;
-    var string=" ██翠节下天来，通明谁侍。██地有高斋要名士███相逢恨晚，老矣酒兵诗帅；██岁寒同一笑、千年事。██梅花满树，又是一年冬至。正相思，恰有江南使。";
-	$.intent=function(str){
-		str="　　"+str;
-		//var reg=new RegExp("/█{1,2}/","i"); //创建正则RegExp对象
-        str=str.replace(eval("/█/gi"),"█");
+          let sun = new zrender.Circle({
+            shape: {
+              cx: x,
+              cy: y,
+              r: 70
+            },
+            style: {
+              fill: linearColor,
+              stroke: linearColor,
+              shadowBlur: 15,
+              shadowColor: "#652",
+              shadowOffsetY: 5,
+              shadowOffsetX: 5,
+              draggable: true,
+              silent: true
+            }
+          });
 
-		return str;
-	}
-	string=$.intent(string);
-	
-	var echo=setInterval("$.echo()",300);
-		
-	
-	
-	$.guang=function(){
-		  if(guangSub<guangs.length-1){
-			    guangSub++;
-			  }else{
-				  guangSub=0;
-				  }
-			guangBiao=guangs[guangSub];
-			$("#guang").html(guangBiao);
-			
-		}
-	
-	$.echo=function(){
-		if(subs<string.length){
-		$("#txt").html($("#txt").html()+$.repl(string.substr(subs,1)));
-		if($("#guang").offset().top > document.body.scrollHeight / 2){
-		  window.scrollTo(0,$("#guang").offset().top);
-		}
-               $(".des").css("bottom","0px");
-		subs++;
-		}
-	}
-	$.repl=function(str){
-		str=str.replace("\r\n","<br/>");
-		str=str.replace("\n","<br/>");
-		str=str.replace("█","<br/>");
-		return str;
-		}
-});
+          this.opts.add(sun);
+        };
 
-</script>
-</head>
+        this.createScene = () => {
+          //https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1578634830458&di=ad8ef48be956a7ce8b7536706ae4aae3&imgtype=0&src=http%3A%2F%2Fimg1.juimg.com%2F160618%2F330831-16061QH94263.jpg
+          let img = new zrender.Image({
+            style: {
+              image:
+                "http://pic.netbian.com/uploads/allimg/191227/002739-1577377659225d.jpg",
+              width: PAGE_WIDTH,
+              height: PAGE_HEIGHT
+            }
+          });
 
-<center>
-<div align="left" class="content"><span  id="txt"></span><span id="guang"></span>
-<span></span>
-</div>
-</center>
+          this.opts.add(img);
+        };
+        this.init = () => {
+          for (let i = 0; i < 100; i++) {
+            this.createRain();
+            this.createStar()
+          }
+          setTimeout(() => {
+            for (let i = 0; i < 50; i++) {
+              this.createRain();
+              this.createCircle();
+            }
+          }, 300);
 
+        };
+        this.createRain = () => {
+          let initX = Math.random() * PAGE_WIDTH;
+          let rain = new zrender.Droplet({
+            shape: {
+              cx: initX,
+              cy: Math.random() * 50 - 50,
+              width: Math.random() * 2+1,
+              height: Math.random() * 10 + 6
+            },
+            style: {
+              fill: "rgba(255,255,255,.8)",
+              stroke: "#f5f3f2"
+            }
+          });
+          rain.animateTo(
+            {
+              shape: {
+                cx: initX + Math.random() * 100 - 100,
+                cy: Math.random() * PAGE_HEIGHT/2 + PAGE_HEIGHT/2
+              },
+              style: {
+                fill: "rgba(255,255,255,1)"
+              },
+              position: [12, 100]
+            },
+            1200,
+            0,
+            "quadraticIn",
+            () => {
+              this.opts.remove(rain);
+              setTimeout(() => {
+                this.createRain();
+              }, Math.random() * 300);
+            }
+          );
+          this.opts.add(rain);
+        };
+        this.createCircle = () => {
+          let initX = Math.random() * PAGE_WIDTH;
+          let circle = new zrender.Circle({
+            shape: {
+              cx: initX,
+              cy: Math.random() * 50 - 50,
+              r: Math.random() * 2+1
+            },
+            style: {
+              fill: "rgba(255,255,255,.8)",
+              stroke: "#f5f3f2"
+            }
+          });
+          circle.animateTo(
+            {
+              shape: {
+                cx: initX + Math.random() * 100 - 100,
+                cy: Math.random() * PAGE_HEIGHT/2 + PAGE_HEIGHT/2
+              },
+              style: {
+                fill: "rgba(255,255,255,1)"
+              },
+              position: [12, 100]
+            },
+            1800,
+            0,
+            "linear",
+            () => {
+              this.opts.remove(circle);
+              setTimeout(() => {
+                this.createCircle();
+              }, Math.random() * 300);
+            }
+          );
+          this.opts.add(circle);
+        };
+        this.createStar = () => {
+          let initX = Math.random() * PAGE_WIDTH;
+          let star = new zrender.Star({
+            shape: {
+              cx: initX,
+              cy: Math.random() * 50 - 50,
+              n: 8,
+              r: Math.random() * 3 + 3,
+              r0: Math.random() * 2 + 2
+            },
+            //R254 G254 B65
+            style: {
+              fill: "#fff",
+              stroke: "#f5f3f2"
+            }
+          })
+          star.animateTo(
+            {
+              shape: {
+                cx: initX + Math.random() * 100 - 100,
+                cy: Math.random() * PAGE_HEIGHT/2 + PAGE_HEIGHT/2,
+              },
+              style: {
+                fill: "rgba(255,244,233,.7)"
+              },
+              position: [12, 100]
+            },
+            5000,
+            0,
+            "backIn",
+            () => {
+              this.opts.remove(star);
+              setTimeout(() => {
+                this.createStar();
+              }, Math.random() * 1000);
+            }
+          );
+          this.opts.add(star);
+        };
+        this.opts = new LoadScene().opts || new Object();
 
-
-
-<!--下面是浮动的桃心-->
-<div id="bubbles" style="visibility:hidden">
-<img src="img/1.png">
-<img src="img/2.png">
-<img src="img/1.png">
-</div>
-<!---->
-
-
-
-</body>
+        this.createScene();
+        this.createSun();
+        this.init();
+        this.opts.configLayer(1, {
+          motionBlur: true,
+          lastFrameAlpha: 0.1
+        });
+      })();
+    </script>
+  </body>
 </html>
