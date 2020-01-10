@@ -4,7 +4,7 @@
  * @Author: Vencent Lum
  * @Date: 2020-01-10 08:30:58
  * @LastEditors  : Vencent Lum
- * @LastEditTime : 2020-01-10 16:07:48
+ * @LastEditTime : 2020-01-10 16:19:42
  -->
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@
     <script>
       const PAGE_HEIGHT = document.body.clientHeight;
       const PAGE_WIDTH = document.body.clientWidth;
-      
+
       class LoadScene {
         opts = null;
         constructor() {
@@ -41,8 +41,30 @@
           });
         }
       }
+      //全屏
+      function inFullScreen(){
+        var de = document.documentElement;
+          if (de.requestFullscreen) {
+            de.requestFullscreen();
+          }
+          if (de.mozRequestFullScreen) {
+            de.mozRequestFullScreen();
+          }
+          if (de.webkitRequestFullScreen) {
+            de.webkitRequestFullScreen();
+          }
+          document.body.removeEventListener("click",inFullScreen);
+      }
       (function() {
-        this.createSun = (x=PAGE_WIDTH/2, y=100/2, x2, y2, colorStops, globalCoord) => {
+        document.body.addEventListener("click",inFullScreen,true);
+        this.createSun = (
+          x = PAGE_WIDTH / 2,
+          y = 100 / 2,
+          x2,
+          y2,
+          colorStops,
+          globalCoord
+        ) => {
           let linearColor = new zrender.LinearGradient(
             0,
             0,
@@ -97,7 +119,7 @@
         this.init = () => {
           for (let i = 0; i < 100; i++) {
             this.createRain();
-            this.createStar()
+            this.createStar();
           }
           setTimeout(() => {
             for (let i = 0; i < 50; i++) {
@@ -105,7 +127,6 @@
               this.createCircle();
             }
           }, 300);
-
         };
         this.createRain = () => {
           let initX = Math.random() * PAGE_WIDTH;
@@ -113,7 +134,7 @@
             shape: {
               cx: initX,
               cy: Math.random() * 50 - 50,
-              width: Math.random() * 2+1,
+              width: Math.random() * 2 + 1,
               height: Math.random() * 10 + 6
             },
             style: {
@@ -125,7 +146,7 @@
             {
               shape: {
                 cx: initX + Math.random() * 100 - 100,
-                cy: Math.random() * PAGE_HEIGHT/2 + PAGE_HEIGHT/2
+                cy: (Math.random() * PAGE_HEIGHT) / 2 + PAGE_HEIGHT / 2
               },
               style: {
                 fill: "rgba(255,255,255,1)"
@@ -150,7 +171,7 @@
             shape: {
               cx: initX,
               cy: Math.random() * 50 - 50,
-              r: Math.random() * 2+1
+              r: Math.random() * 2 + 1
             },
             style: {
               fill: "rgba(255,255,255,.8)",
@@ -161,7 +182,7 @@
             {
               shape: {
                 cx: initX + Math.random() * 100 - 100,
-                cy: Math.random() * PAGE_HEIGHT/2 + PAGE_HEIGHT/2
+                cy: (Math.random() * PAGE_HEIGHT) / 2 + PAGE_HEIGHT / 2
               },
               style: {
                 fill: "rgba(255,255,255,1)"
@@ -195,12 +216,12 @@
               fill: "#fff",
               stroke: "#f5f3f2"
             }
-          })
+          });
           star.animateTo(
             {
               shape: {
                 cx: initX + Math.random() * 100 - 100,
-                cy: Math.random() * PAGE_HEIGHT/2 + PAGE_HEIGHT/2,
+                cy: (Math.random() * PAGE_HEIGHT) / 2 + PAGE_HEIGHT / 2
               },
               style: {
                 fill: "rgba(255,244,233,.7)"
