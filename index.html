@@ -41,22 +41,9 @@
           });
         }
       }
-      //全屏
-      function inFullScreen(){
-        var de = document.documentElement;
-          if (de.requestFullscreen) {
-            de.requestFullscreen();
-          }
-          if (de.mozRequestFullScreen) {
-            de.mozRequestFullScreen();
-          }
-          if (de.webkitRequestFullScreen) {
-            de.webkitRequestFullScreen();
-          }
-          document.body.removeEventListener("click",inFullScreen);
-      }
+
       (function() {
-        document.body.addEventListener("click",inFullScreen,true);
+   
         this.createSun = (
           x = PAGE_WIDTH / 2,
           y = 100 / 2,
